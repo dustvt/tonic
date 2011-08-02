@@ -200,22 +200,11 @@ class Request {
         // set baseUri
         $this->baseUri = $config['baseUri'];
         
-        // get request URI
-        $parts = explode('/', $config['uri']);
-        $lastPart = array_pop($parts);
-        $this->uri = join('/', $parts);
-        
-        $parts = explode('.', $lastPart);
-        $this->uri .= '/'.$parts[0];
+        // set request URI
+        $this->uri = $config['uri'];
         
         if ($this->uri != '/' && substr($this->uri, -1, 1) == '/') { // remove trailing slash problem
             $this->uri = substr($this->uri, 0, -1);
-        }
-        
-        array_shift($parts);
-        foreach ($parts as $part) {
-            $this->accept[10][] = $part;
-            $this->acceptLang[10][] = $part;
         }
         
         // sort accept headers
