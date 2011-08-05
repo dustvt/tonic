@@ -216,7 +216,7 @@ class Request {
             } else {
                 $num = 10;
             }
-            $key = array_search($parts[0], $this->mimetypes);
+            $key = $parts[0];
             if ($key) {
                 $this->accept[$num][] = $key;
             }
