@@ -112,6 +112,12 @@ class Request {
      */
     public $method = 'GET';
     
+	/**
+	 * Content type of request body
+	 * @var str
+	 */
+	public $contentType;
+
     /**
      * Body data of incoming request
      * @var str
@@ -280,6 +286,10 @@ class Request {
         // get HTTP method
         $this->method = strtoupper($this->getConfig($config, 'method', 'REQUEST_METHOD', $this->method));
         
+		// get request body content type
+		$this->contentType = $this->getConfig($config, 'content-type', 'CONTENT_TYPE', $this->contentType);
+
+
         // get HTTP request data
         $this->data = $this->getConfig($config, 'data', NULL, file_get_contents("php://input"));
         
